@@ -1,22 +1,42 @@
 <!doctype html>
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Open Zumba Registration</title>
 <style>
   body{font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#fafafa;margin:0}
   .card{max-width:520px;margin:40px auto;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 1px 4px rgba(0,0,0,.04);padding:24px}
-  a.btn{display:inline-block;padding:12px 16px;background:#111;color:#fff;border-radius:12px;text-decoration:none;font-weight:700}
-  p.muted{color:#666;font-size:14px}
+  button{display:inline-block;padding:12px 16px;background:#111;color:#fff;border:0;border-radius:12px;font-weight:700;cursor:pointer}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .muted{color:#666;font-size:14px;margin-top:12px}
 </style>
 <div class="card">
   <h2>Open Zumba Registration</h2>
   <p>Tap a button to continue.</p>
 
-  <!-- CHANGE THIS to your current /exec URL -->
-  <a class="btn" href="https://script.google.com/macros/s/AKfycbzfYlib2yqM1wm3xDXoQc7h6uOhI3xqnobHBGffcEFOs0auSziNA505zdQzXEZt_ap-nw/exec">Open Registration</a>
+  <!-- 1) FORM-BASED NAVIGATION (most reliable) -->
+  <div class="row">
+    <form action="https://script.google.com/macros/s/AKfycbzfYlib2yqM1wm3xDXoQc7h6uOhI3xqnobHBGffcEFOs0auSziNA505zdQzXEZt_ap-nw/exec" method="get" target="_self">
+      <button type="submit">Open Registration</button>
+    </form>
 
-  <!-- Optional admin -->
- <!--<div style="height:12px"></div>
-  <a class="btn" href="https://script.google.com/macros/s/AKfycbzfYlib2yqM1wm3xDXoQc7h6uOhI3xqnobHBGffcEFOs0auSziNA505zdQzXEZt_ap-nw/exec?admin=1">Admin</a> -->
+    <form action="https://script.google.com/macros/s/AKfycbzfYlib2yqM1wm3xDXoQc7h6uOhI3xqnobHBGffcEFOs0auSziNA505zdQzXEZt_ap-nw/exec" method="get" target="_self">
+      <input type="hidden" name="admin" value="1">
+      <button type="submit">Admin</button>
+    </form>
+  </div>
 
-  <p class="muted">If nothing happens, long-press the button and choose “Open in browser”.</p>
+  <!-- 2) JS FALLBACK BUTTONS (in case a very old WebView ignores form submit) -->
+  <div class="row" style="margin-top:12px">
+    <button type="button"
+            onclick="window.location.assign('https://script.google.com/macros/s/AKfycbzfYlib2yqM1wm3xDXoQc7h6uOhI3xqnobHBGffcEFOs0auSziNA505zdQzXEZt_ap-nw/exec')">
+      Open (JS fallback)
+    </button>
+    <button type="button"
+            onclick="window.location.assign('https://script.google.com/macros/s/AKfycbzfYlib2yqM1wm3xDXoQc7h6uOhI3xqnobHBGffcEFOs0auSziNA505zdQzXEZt_ap-nw/exec?admin=1')">
+      Admin (JS fallback)
+    </button>
+  </div>
+
+  <p class="muted">
+    If nothing happens, long-press a button and choose <b>Open in browser</b>.
+  </p>
 </div>
